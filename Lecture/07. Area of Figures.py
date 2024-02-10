@@ -1,7 +1,7 @@
 from math import pi
 
 type_of_figure = input()
-area = float()
+area = ''
 
 match type_of_figure:
     case 'square':
