@@ -12,7 +12,7 @@ DISCOUNT_OVER_25 = 10 / 100
 
 type_of_fuel = input()
 volume_loaded = float(input())
-has_club_card = 'True' if input() == 'Yes' else 'False'
+has_club_card = True if input() == 'Yes' else False
 
 
 def get_billed():
@@ -39,7 +39,7 @@ def get_card_discount():
 
 bill = get_billed()
 
-if has_club_card == "True":
+if has_club_card:
     bill -= get_card_discount()
 
 if volume_loaded > 25:
