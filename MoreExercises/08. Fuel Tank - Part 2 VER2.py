@@ -15,32 +15,32 @@ volume_loaded = float(input())
 has_club_card = True if input() == 'Yes' else False
 
 
-def get_billed():
-    price = 0
-    if type_of_fuel == 'Gasoline':
-        price += volume_loaded * GASOLINE
-    elif type_of_fuel == 'Diesel':
-        price += volume_loaded * DIESEL
-    elif type_of_fuel == 'Gas':
-        price += volume_loaded * GAS
-    return price
-
-
-def get_card_discount():
+def get_card_discount(fuel: str = type_of_fuel):
     discount = 0
-    if type_of_fuel == 'Gasoline':
+    if fuel == 'Gasoline':
         discount += volume_loaded * DISCOUNT_GASOLINE
-    elif type_of_fuel == 'Diesel':
+    elif fuel == 'Diesel':
         discount += volume_loaded * DISCOUNT_DIESEL
-    elif type_of_fuel == 'Gas':
+    elif fuel == 'Gas':
         discount += volume_loaded * DISCOUNT_GAS
     return discount
 
 
-bill = get_billed()
+def get_billed(fuel: str = type_of_fuel):
+    price = 0
+    if fuel == 'Gasoline':
+        price += volume_loaded * GASOLINE
+    elif fuel == 'Diesel':
+        price += volume_loaded * DIESEL
+    elif fuel == 'Gas':
+        price += volume_loaded * GAS
+    return price
+
+
+bill = get_billed(type_of_fuel)
 
 if has_club_card:
-    bill -= get_card_discount()
+    bill -= get_card_discount(type_of_fuel)
 
 if volume_loaded > 25:
     bill -= bill * DISCOUNT_OVER_25
